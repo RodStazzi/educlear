@@ -1,0 +1,55 @@
+body {
+  background-color: #f8f9fa;
+  /*padding-top: 50px;*/
+}
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hidden {
+  display: none;
+}
+
+
+
+.attendance-container {
+  display: none;
+}
+.table-responsive {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+
+
+#notesTable {
+  overflow-x: auto;
+}
+
+.table th {
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.tur-btn {background-color: #5b99ef;  color: white;} 
+.tur-btn:hover {background: #b1d6f6;}
+
+.btn-success:hover {background-color: #73b5ee; color: black;}
+
+.btn-secondary:hover {background-color: #e7e7e7; color: black;}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* O puedes usar space-around, space-evenly, etc. */
+}
+
+.button-container button {
+  margin: 5px; /* Opcional: para agregar espacio entre los botones */
+}
+
+
