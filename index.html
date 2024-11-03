@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITRANAS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/utils/eduClearFavi.svg">
+</head>
+<body>
+    <div class="container main-container">
+        <div id="loginSection" class="login-container">
+          <div class="logo w-100">
+            <img src="assets/utils/eduClearLg.svg"  class="p-3" alt="">
+        </div>
+            <h2 class="text-center mb-4">Bienvenido al Sistema Transparente de Notas, Asistencias y Subsidios</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">RUT</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn tur-btn w-100">Ingresar</button>
+            </form>
+
+            <div class="text-center mt-3">
+              <a href="#" id="showRegisterLink">Registrarse</a>
+          </div>
+        </div>
+
+
+        <div id="registerSection" class="hidden">
+          <h2 class="text-center mb-4">Registro</h2>
+          <form id="registerForm">
+              <div class="mb-3">
+                  <label for="newUsername" class="form-label">Nuevo Usuario</label>
+                  <input type="text" class="form-control" id="newUsername" required>
+              </div>
+              <div class="mb-3">
+                  <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                  <input type="password" class="form-control" id="newPassword" required>
+              </div>
+              <button type="submit" class="btn tur-btn w-100">Registrar</button>
+          </form>
+          <div class="text-center mt-3">
+              <a href="#" id="backToLoginLink">Volver al inicio de sesión</a>
+          </div>
+      </div>
+
+
+        <div id="studentSection" class="hidden">
+            <h2 class="text-center mb-4">Información del Estudiante</h2>
+            <div id="studentData"></div>
+            <button id="generateSubsidiesBtn" class="btn tur-btn mt-3">Generar Tablas de Subsidios</button>
+            <div id="subsidiesTables" class="mt-4 hidden"></div>
+            <button id="logoutBtn" class="btn btn-secondary mt-3">Cerrar Sesión</button>
+        </div>
+
+        <div class="attendance-button-container text-center mt-5" style="display: none;">
+            <button id="showAttendanceButton" class="btn tur-btn mb-2">Asistencia de Estudiantes</button>
+            <button id="showNotesBtn" class="btn tur-btn mb-2">Notas de Estudiantes</button>
+            <button id="loadStudents" class="btn tur-btn mb-2">Datos de Estudiantes</button>
+            <button id="addStudent" class="btn btn-primary mb-2">Agregar Estudiante</button>
+            <button id="closeSesion" class="btn btn-secondary mb-2">Cerrar Sesion</button>
+        </div>
+  
+          <div class="attendance-container mt-5">
+              <h2 class="text-center">Asistencia de Estudiantes</h2>
+              <button id="closeAttendanceButton" class="btn tur-btn">Cerrar</button>
+              <div class="table-responsive">
+                  <table class="table table-striped table-hover">
+                      <thead>
+                          <tr>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Fecha / Asistencia</th>
+                              <th>Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody id="attendanceTableBody"></tbody>
+                  </table>
+              </div>
+          </div>
+
+
+          <div id="dashboard" style="display: none;">
+            <h2 class="text-center mb-4">Notas de Estudiantes</h2>
+            <button id="closeNotesBtn" style="display: none;" class="btn tur-btn mb-4">Cerrar</button>
+            <div id="notesTable" style="display: none;"></div>
+        </div>
+
+        <div id="mainContent"  style="display: none;">
+            <h2>Sistema de Manejo de Estudiantes</h2>
+            <button id="closeAlumnBtn" style="display: none;" class="btn tur-btn mb-4">Cerrar</button>
+            <div id="studentTable" class="hidden">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="studentDatas">
+                  </tbody>
+              </table>
+            </div>
+
+
+          </div>
+      </div>
+
+
+        <!-- Add Student Modal -->
+  <div class="modal fade" id="addStudentModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Estudiante</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addStudentForm">
+            <div class="mb-3">
+              <label for="addNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="addNombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="addApellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="addApellido" required>
+            </div>
+            <div class="mb-3">
+              <label for="addCorreo" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="addCorreo" required>
+            </div>
+            <div class="mb-3">
+              <label for="addFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="addFechaNacimiento" required>
+            </div>
+            <div class="mb-3">
+              <label for="addRut" class="form-label">Rut</label>
+              <input type="text" class="form-control" id="addRut" required>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="addCuiper" required>
+                <label for="addCuiper" class="form-check-label">Cuidado Persona</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn tur-btn" id="submitAddStudent">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Student Modal -->
+  <div class="modal fade" id="updateStudentModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Actualizar Estudiante</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="updateStudentForm">
+            <input type="hidden" id="updateIdAlumno">
+            <div class="mb-3">
+              <label for="updateNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="updateNombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="updateApellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="updateApellido" required>
+            </div>
+            <div class="mb-3">
+              <label for="updateCorreo" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="updateCorreo" required>
+            </div>
+            <div class="mb-3">
+              <label for="updateFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="updateFechaNacimiento" required>
+            </div>
+            <div class="mb-3">
+              <label for="updateCurso" class="form-label">Curso</label>
+              <select class="form-select" id="updateCurso"></select>
+            </div>
+            <div class="mb-3">
+              <label for="updateEstado" class="form-label">Estado</label>
+              <select class="form-select" id="updateEstado"></select>
+            </div>
+            <div class="mb-3">
+              <label for="updateCuiper" class="form-label">Cuidado Persona</label>
+              <input type="checkbox" class="form-check-input" id="updateCuiper">
+          </div>
+          <div class="mb-3">
+              <label for="updateRut" class="form-label">RUT</label>
+              <input type="text" class="form-control" id="updateRut" required>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn tur-btn" id="submitUpdateStudent">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="assets/js/indx_stdnt.js"></script>
+    <script type="module" src="assets/js/adm_asist.js"></script>
+    <script type="module" src="assets/js/adm_not.js"></script>
+    <script type="module" src="assets/js/adm_alm.js"></script>
+
+</body>
+</html>
