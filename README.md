@@ -50,7 +50,7 @@ Al finalizar el proyecto, los estudiantes obtendrán experiencia en:
 - **Git** para control de versiones
 
 ## Presentación
-<a href="https://docs.google.com/presentation/d/1e8ZH33ylDRjScX6fWGwNZuWnKBPLlO2SJkKNVr7AsQk/edit#slide=id.g3117e19a0ca_0_402" target="_blank">
+<a href="https://docs.google.com/presentation/d/1e8ZH33ylDRjScX6fWGwNZuWnKBPLlO2SJkKNVr7AsQk/edit#slide=id.p" target="_blank">
   <img src="https://img.shields.io/badge/PRESENTACION-aqui-color.svg" alt="PRESENTACION" style="height: 40px;">
 </a>
 
