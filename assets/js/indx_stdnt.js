@@ -205,15 +205,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-  ${info.notas.filter(nota => nota.id_nota === 0)
-    .map(nota => `
-      <tr>
-        <td>${nota.id_nota}</td>
-        <td>${nota.id_alumno_curso}</td>
-        <td>${nota.nota}</td>
-        <td>${nota.fecha || 'N/A'}</td>
-      </tr>
-    `).join('')}
+                                      ${info.notas.filter(nota => nota.id_nota !== 0)
+                                        .map(nota => `
+                                          <tr>
+                                            <td>${nota.id_nota}</td>
+                                            <td>${nota.id_alumno_curso}</td>
+                                            <td>${nota.nota}</td>
+                                            <td>${nota.fecha || 'N/A'}</td>
+                                          </tr>
+                                        `).join('')}
                                 </tbody>
                             </table>
                         </div>
@@ -236,17 +236,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-  ${info.asistencias.filter(asistencia => asistencia.id_asistencia === 0)
-    .map(asistencia => `
-      <tr>
-        <td>${asistencia.id_asistencia}</td>
-        <td>${asistencia.id_alumno_curso}</td>
-        <td>${asistencia.presentePrimera ? '✓' : '✗'}</td>
-        <td>${asistencia.presenteSegunda ? '✓' : '✗'}</td>
-        <td>${asistencia.fecha || 'N/A'}</td>
-        <td>${asistencia.pagado ? '✓' : '✗'}</td>
-      </tr>
-    `).join('')}
+                                      ${info.asistencias.filter(asistencia => asistencia.id_asistencia !== 0)
+                                        .map(asistencia => `
+                                          <tr>
+                                            <td>${asistencia.id_asistencia}</td>
+                                            <td>${asistencia.id_alumno_curso}</td>
+                                            <td>${asistencia.presentePrimera ? '✓' : '✗'}</td>
+                                            <td>${asistencia.presenteSegunda ? '✓' : '✗'}</td>
+                                            <td>${asistencia.fecha || 'N/A'}</td>
+                                            <td>${asistencia.pagado ? '✓' : '✗'}</td>
+                                          </tr>
+                                        `).join('')}
                                 </tbody>
                             </table>
                         </div>
