@@ -235,16 +235,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    ${info.asistencias.map(asistencia => `
-                                        <tr>
-                                            <td>${asistencia.id_asistencia}</td>
-                                            <td>${asistencia.id_alumno_curso}</td>
-                                            <td>${asistencia.presentePrimera ? '✓' : '✗'}</td>
-                                            <td>${asistencia.presenteSegunda ? '✓' : '✗'}</td>
-                                            <td>${asistencia.fecha || 'N/A'}</td>
-                                            <td>${asistencia.pagado ? '✓' : '✗'}</td>
-                                        </tr>
-                                    `).join('')}
+  ${info.asistencias.filter(asistencia => asistencia.id_asistencia !== null)
+    .map(asistencia => `
+      <tr>
+        <td>${asistencia.id_asistencia}</td>
+        <td>${asistencia.id_alumno_curso}</td>
+        <td>${asistencia.presentePrimera ? '✓' : '✗'}</td>
+        <td>${asistencia.presenteSegunda ? '✓' : '✗'}</td>
+        <td>${asistencia.fecha || 'N/A'}</td>
+        <td>${asistencia.pagado ? '✓' : '✗'}</td>
+      </tr>
+    `).join('')}
                                 </tbody>
                             </table>
                         </div>
