@@ -264,7 +264,7 @@
             return;
         }
 
-        const attendanceSubsidies = studentInfo.asistencias.map(asistencia => {
+        const attendanceSubsidies = studentInfo.asistencias.filter(asistencia => asistencia.id_asistencia !== 0).map(asistencia => {
             let subsidio = 0;
             if (asistencia.presentePrimera && asistencia.presenteSegunda) {
                 subsidio = 1000;
