@@ -53,3 +53,19 @@ body {
 }
 
 
+.contai-foot {
+  text-align: center;
+  padding: 10px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.img-foot {
+  width: 100px;
+  vertical-align: middle;
+}
