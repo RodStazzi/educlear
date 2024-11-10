@@ -45,7 +45,7 @@ Al finalizar el proyecto, los estudiantes obtendrán experiencia en:
 
 ## Requisitos
 
-- **Java 17+**
+- **Java 11+**
 - **Maven** para la gestión de dependencias
 - **Git** para control de versiones
 
